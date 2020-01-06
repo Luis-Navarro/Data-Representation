@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+		</script>
+		<title>Fruit Market
+		</title>
+	</head>
+	<body>
+		<div id="header">
+		<h1>Fruit Market</h1></div>
+		<p> Please click button to obtain current fruits</p>		
+		<button onclick = "getAll()">Get All</button>
+		<div id="output"></div>
+	
+	<p></p>
+	<div id="create"> 
+		<p> To create a new fruit, please provide the below details</p>
+		
+	<p></p>
+	<div id="update"> 
+		<p> To update a fruit, please provide the below details</p>
+	
+	<p></p>
+	<div id="delete"> 
+		<p> To delete a fruit from te records, please provide the id</p>
+	</body>
+	<script>
+	function getAll(){
+		$.ajax({
+			url: "http://127.0.0.1:5000/records",
+			method:"GET",
+			data:"",
+			dataType: "JSON",
+			success:function(result){
+				//console.log(result);
+				for (fruit of result){
+				//getelementByID("fruitsTable")
+				document.getElementById("output").innerHTML = JSON.stringify(result);
+			}},
+			error:function(xhr,status,error){
+				console.log("error: "+status+" msg:"+error);
+			}
+		})
+	};
+	</script>
+	<script>
+	function createFruit():
+		var newFruit={"id": ,"fruit": , "price":}
+		console.log(JSON.stringify(newFruit));
+		$.ajax({
+			url:"http://127.0.0.1:5000/records",
+			method: "POST",
+			data:JSON.stringify(newFruit),
+			dataType: "JSON",
+			contentType: "application/json; charset=utf-8",
+			success: function(result){
+				console.log(result);
+				document.getElementById("output").innerText=JSON.stringify(result);
+			},
+			error: function (xhr, status, error){
+				console.log("error: "+status+" msg:"+error);
+			}
+		})
+	};
+	</script>
+	<script>
+	function updateFruit(){
+		var fruit={"id": ,"fruit": , "price":}
+		console.log(JSON.stringify(newFruit));
+		$.ajax({
+			url:"http://127.0.0.1:5000/records",
+			method: "PUT",
+			data:JSON.stringify(fruit),
+			dataType: "JSON",
+			contentType: "application/json; charset=utf-8",
+			success: function(result){
+				console.log(result);
+				document.getElementById("output").innerText=JSON.stringify(result);
+			},
+			error: function (xhr, status, error){
+				console.log("error: "+status+" msg:"+error);
+			}
+		});
+	},
+	</script>
+	<script>
+	function deleteFruit(){
+		var fruit={"id": }
+		console.log(JSON.stringify(Fruit));
+		$.ajax({
+			url:"http://127.0.0.1:5000/records",
+			method: "DELETE",
+			data:JSON.stringify(Fruit),
+			dataType: "JSON",
+			contentType: "application/json; charset=utf-8",
+			success: function(result){
+				console.log(result);
+				document.getElementById("output").innerText=JSON.stringify(result);
+			},
+			error: function (xhr, status, error){
+				console.log("error: "+status+" msg:"+error);
+			}
+		});
+	}
+	</script>
+
+</html>
